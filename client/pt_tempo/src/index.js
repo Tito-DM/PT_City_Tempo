@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import MainContext from './context/context';
+import { MainState } from './context/state';
 
 ReactDOM.render(
-  <MainContext>
+  <MainState>
     <App />
-  </MainContext>,
+  </MainState>,
   document.getElementById('root')
 );
 

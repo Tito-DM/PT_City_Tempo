@@ -7,7 +7,7 @@ const initialSate = {
   isFetching: true,
 };
 
-export const State = ({ children }) => {
+export const MainState = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialSate);
 
   return (
