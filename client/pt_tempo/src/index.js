@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import MainContext from './context/context';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <MainContext>
     <App />
-  </React.StrictMode>,
+  </MainContext>,
   document.getElementById('root')
 );
 
