@@ -2,6 +2,27 @@ const { validationResult } = require("express-validator");
 const User = require("../model/user");
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { use } = require("../routes");
+
+const jwtGenerator = (user) => {
+  //set jwt playload
+  const payload = {
+    user: {
+      id: user.id,
+    },
+  };
+
+  return jwt.sign(payload, process.env.JWTSECRETKEY, {
+    expiresIn: 360000,
+  });
+};
+
+const passwordFilter = (user) => {
+  return {
+    username: user.username,
+    id: user.id,
+  };
+};
 
 const login = async (req, res) => {
   //destructaring params
@@ -20,25 +41,12 @@ const login = async (req, res) => {
     if (!passwordMatch) {
       return res.status(400).json({ erros: [{ msg: "credencias errados" }] });
     }
+    //filter user
+    const data = passwordFilter(user);
+    //get token
+    const token = jwtGenerator(user);
 
-    // set token payload
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
-    //generate jwt
-    jwt.sign(
-      payload,
-      process.env.JWTSECRETKEY,
-      {
-        expiresIn: 360000,
-      },
-      (err, token) => {
-        if (err) throw err;
-        res.status(200).json({ token, user });
-      }
-    );
+    res.status(200).json({ token, data });
   } catch (error) {
     res.status(500).send("server Error");
   }
@@ -72,27 +80,12 @@ const siginUp = async (req, res) => {
 
     //save to db
     await user.save();
+    //filter user
+    const data = passwordFilter(user);
+    //get token
+    const token = jwtGenerator(user);
 
-    //return jwt
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
-
-    jwt.sign(
-      payload,
-      process.env.JWTSECRETKEY,
-      {
-        expiresIn: 360000,
-      },
-      (err, token) => {
-        if (err) throw err;
-        //distructuring user info
-        const { password, ...data } = user._doc;
-        res.status(200).json({ token, data });
-      }
-    );
+    res.status(200).json({ token, data });
   } catch (error) {
     res.status(500).send(error);
   }
