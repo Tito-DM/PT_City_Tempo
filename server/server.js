@@ -12,6 +12,10 @@ const app = express();
 //init DB
 dbConnection();
 
+
+//init bodyParser
+app.use(express.json({extended:false}))
+
 //use routes
 app.use("/api/v1",routers)
 

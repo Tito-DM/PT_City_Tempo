@@ -17,7 +17,7 @@ router.post(
 router.post(
   "/signup",
   [
-    check("username", "userName não pode estar vazio").not().isEmpty(),
+    check("username", "username não pode estar vazio").not().isEmpty(),
     check("password", "Palavra passe tem que no minimo 8 caracteres").isLength({
       min: 8,
     }),
@@ -26,6 +26,6 @@ router.post(
 );
 
 //weather data
-router.get("/weather", getWeatherData);
+router.get("/weather",middleware, getWeatherData);
 
 module.exports = router;
