@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import WeatherCard from "./components/weatherCard"
 import "./App.css";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
           <div id="item-3">&nbsp;</div>
           <div id="item-4">&nbsp;</div>
         </div>
+
+        <WeatherCard/>
       </main>
     </Fragment>
   );
