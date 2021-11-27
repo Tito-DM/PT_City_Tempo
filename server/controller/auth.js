@@ -2,7 +2,6 @@ const { validationResult } = require("express-validator");
 const User = require("../model/user");
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { use } = require("../routes");
 
 const jwtGenerator = (user) => {
   //set jwt playload
