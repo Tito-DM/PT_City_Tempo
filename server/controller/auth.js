@@ -45,7 +45,7 @@ const login = async (req, res) => {
     //get token
     const token = jwtGenerator(user);
 
-    res.status(200).json({ token, data });
+    res.status(200).json({ data,sucess: true, msg: "login efetuado com sucess ",token  });
   } catch (error) {
     res.status(500).send("server Error");
   }
@@ -84,7 +84,7 @@ const siginUp = async (req, res) => {
     //get token
     const token = jwtGenerator(user);
 
-    res.status(200).json({ token, data });
+    res.status(200).json({data,sucess: true, msg: "registo efetuado com sucess",token });
   } catch (error) {
     res.status(500).send(error);
   }
