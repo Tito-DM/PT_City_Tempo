@@ -1,21 +1,18 @@
-.weatherCard{
-    background: #FFF8F8;
-    opacity: .5;
-    width: 20%;
+.weatherCard {
+  background: #fff8f8;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  
 }
 
-
-.iconText-section{
-    text-align: center;
+.iconText-section {
+  text-align: center;
 }
 
-
-
-
-.top{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-   
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
