@@ -4,7 +4,7 @@ const HandleSubmit = (e) => {
   e.preventDefault();
 };
 
-const Login = () => {
+const Auth = () => {
   return (
     <Fragment>
       <form onSubmit={HandleSubmit}>
@@ -23,4 +23,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Auth;
