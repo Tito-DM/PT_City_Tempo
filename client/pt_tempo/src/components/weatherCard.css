@@ -1,9 +1,7 @@
 .weatherCard {
-  background: #fff8f8;
   opacity: 0.5;
   width: 100%;
   height: 100%;
-  
 }
 
 .iconText-section {
@@ -15,4 +13,26 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 20px;
+}
+
+.weatherDescription{
+    font-size: xx-large;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+}
+
+.cityName{
+    font-size: 40px;
+    letter-spacing: 2px;
+    margin: 15px 0px 40px 0px;
+}
+
+.cityTemp-section{
+    text-align: center;
+}
+
+.bottom{
+    width: 100%;
+    text-align: center;
 }

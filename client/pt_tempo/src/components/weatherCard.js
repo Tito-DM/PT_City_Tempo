@@ -8,18 +8,20 @@ const WeatherCard = () => {
       <div className="top">
         <div className="iconText-section">
           <div className="weatherCard-icon">
-            <BsFillCloudSunFill size={100} color="black" />
+            <BsFillCloudSunFill size={100} color="white" />
           </div>
-          <span className="weatherDescription">text</span>
+          <div className="weatherDescription">Clear Sky</div>
         </div>
 
         <div className="cityTemp-section">
-          <div>City</div>
-          <span>Temp</span>
+          <div className="cityName">Porto</div>
+          <span className="weatherDescription">20º</span>
         </div>
       </div>
 
-      <div className="bottom"></div>
+      <div className="bottom">
+        <span className="weatherDescription">Humidade</span>
+      </div>
     </div>
   );
 };
