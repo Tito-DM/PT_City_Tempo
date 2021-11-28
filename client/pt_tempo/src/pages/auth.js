@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { Fragment, useContext, useState } from "react";
+import Alert from "@mui/material/Alert";
 import MainContext from "../context/context";
-import { useLocation,useNavigate } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import { useLocation, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import { IoEyeSharp } from "react-icons/io5";
 
@@ -79,13 +81,24 @@ const useStyles = makeStyles({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  msgAlertContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  msgAlert: {
+    width: "30%",
+  },
 });
 
 const Auth = () => {
   const classes = useStyles();
   const location = useLocation();
-  let navegate = useNavigate()
-
+  let navegate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [msgActivator, setMsgActivator] = useState(false);
   const context = useContext(MainContext);
   const { dispatch, user, messages } = context;
 
@@ -95,8 +108,16 @@ const Auth = () => {
     password_confirmation: "",
   });
 
+  const cancelMessage = () => {
+    setLoading(false);
+    setTimeout(() => {
+      setMsgActivator(false);
+    }, 6000);
+  };
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post(
         `http://localhost:5000/api/v1${location.pathname}`,
@@ -110,16 +131,24 @@ const Auth = () => {
 
       if (res.data.sucess) {
         dispatch({ type: "auth", payload: res.data });
+        setLoading(false);
         //redirect to home page
         navegate("/");
       }
     } catch (error) {
       if (error.response) {
-        const { msg } = error.response.data.erros[0];
+        setLoading(false);
+       
+        const { msg } = error?.response?.data?.errors[0];
         dispatch({ type: "message", payload: msg });
+        setMsgActivator(true);
+        cancelMessage()
+
       }
       console.log(error);
     }
+
+  
   };
 
   const [showPassord, setShowPassWord] = useState(false);
@@ -131,14 +160,24 @@ const Auth = () => {
   const hanleInput = (e) => {
     setAuthState({ ...AuthState, [e.target.name]: e.target.value });
   };
-  
+
   return (
     <Fragment>
       <div className={classes.titleContainer}>
         <h1 className={classes.title}>O TEMPO AGORA </h1>
       </div>
+      <div className={classes.msgAlertContainer}>
+        <div>
+          {loading ? (
+            <Loader type="Oval" color="red" height={50} width={50} />
+          ) : null}
+        </div>
+        <div className={classes.msgAlert}>
+          {msgActivator ? <Alert severity="warning">{messages}</Alert> : null}
+        </div>
+      </div>
+
       <div className={classes.center}>
-        <span>{messages}</span>
         <form onSubmit={HandleSubmit}>
           <div>
             <div className={classes.inputLabel}>

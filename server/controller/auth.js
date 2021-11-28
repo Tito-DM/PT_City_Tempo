@@ -38,7 +38,7 @@ const login = async (req, res) => {
     const passwordMatch = await bycrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      return res.status(400).json({ erros: [{ msg: "credencias errados" }] });
+      return res.status(400).json({ errors: [{ msg: "credencias errados" }] });
     }
     //filter user
     const data = passwordFilter(user);
@@ -52,10 +52,10 @@ const login = async (req, res) => {
 };
 
 const siginUp = async (req, res) => {
-  const erros = validationResult(req);
+  const errors = validationResult(req);
 
-  if (!erros.isEmpty()) {
-    return res.status(400).json({ erros: erros.array() });
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
 
   const { username, password } = req.body;
@@ -65,7 +65,7 @@ const siginUp = async (req, res) => {
     let user = await User.findOne({ username });
 
     if (user) {
-      return res.status(400).json({ erros: [{ msg: "user already exists" }] });
+      return res.status(400).json({ errors: [{ msg: "user already exists" }] });
     }
 
     user = new User({
