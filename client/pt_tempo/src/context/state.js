@@ -1,14 +1,19 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import MainContext from "./context";
 import Reducer from "./reducer";
 const initialSate = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   messages: null,
+  weatherData:[],
   isFetching: true,
 };
 
 export const MainState = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialSate);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
 
   return (
     <MainContext.Provider
@@ -17,6 +22,7 @@ export const MainState = ({ children }) => {
         dispatch,
         messages: state.messages,
         user: state.user,
+        weatherData: state.weatherData
       }}
     >
       {children}

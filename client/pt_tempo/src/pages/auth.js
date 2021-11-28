@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { Fragment, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { Fragment, useContext, useState } from "react";
+import MainContext from "../context/context";
+import { useLocation,useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import { IoEyeSharp } from "react-icons/io5";
 
@@ -83,6 +84,10 @@ const useStyles = makeStyles({
 const Auth = () => {
   const classes = useStyles();
   const location = useLocation();
+  const navegate = useNavigate()
+
+  const context = useContext(MainContext);
+  const { dispatch, user, messages } = context;
 
   const [AuthState, setAuthState] = useState({
     username: "",
@@ -93,14 +98,26 @@ const Auth = () => {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/", AuthState, {
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      const res = await axios.post(
+        `http://localhost:5000/api/v1${location.pathname}`,
+        AuthState,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
 
-      console.log(res);
+      if (res.data.sucess) {
+        dispatch({ type: "auth", payload: res.data });
+        //redirect to home page
+        navegate("/");
+      }
     } catch (error) {
+      if (error.response) {
+        const { msg } = error.response.data.erros[0];
+        dispatch({ type: "message", payload: msg });
+      }
       console.log(error);
     }
   };
@@ -114,13 +131,14 @@ const Auth = () => {
   const hanleInput = (e) => {
     setAuthState({ ...AuthState, [e.target.name]: e.target.value });
   };
-
+  
   return (
     <Fragment>
       <div className={classes.titleContainer}>
         <h1 className={classes.title}>O TEMPO AGORA </h1>
       </div>
       <div className={classes.center}>
+        <span>{messages}</span>
         <form onSubmit={HandleSubmit}>
           <div>
             <div className={classes.inputLabel}>

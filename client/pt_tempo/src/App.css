@@ -1,0 +1,84 @@
+.center{
+    margin: 2% 16%;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .angryGrid{
+    display: grid;
+    margin: 0 auto;
+    grid-template-rows:  1fr 1fr 1fr;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+    gap:  0px;
+    height: 80%;
+    color: white;
+  }
+
+  #item-0 {
+    background-color:  rgba(255, 248, 248,.3);
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end:  2;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+  #item-1{
+    background-color:  rgba(255, 248, 248,.3);
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-column-end:  3;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+
+  #item-2 {
+    background-color:  rgba(255, 248, 248,.3);
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 3;
+    grid-column-end:  2;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+
+  #item-3 {
+    background-color:  rgba(255, 248, 248,.3);
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end:  3;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+
+  #item-4 {
+    background-color:  rgba(255, 248, 248,.3);
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-end: 3;
+    grid-column-end:  4;
+    height: 620px;
+    width: 400px;
+    margin: 10px;
+  }
+
+  .nav{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    margin: 20px;
+  }
+
+  .dorpMenu{
+    display: flex;
+    flex-direction: row;
+    align-items:  center;
+  }

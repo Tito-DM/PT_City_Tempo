@@ -13,17 +13,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 30px;
 }
 
 .weatherDescription{
-    font-size: xx-large;
+    font-size: large;
     letter-spacing: 1.5px;
     margin-top: 10px;
 }
 
 .cityName{
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 2px;
     margin: 15px 0px 40px 0px;
 }
@@ -32,7 +33,21 @@
     text-align: center;
 }
 
+.divider{
+  width: 95%;
+  margin: 4px;
+  border: 1px solid white;
+}
+
 .bottom{
-    width: 100%;
-    text-align: center;
+    width: 100%; 
+}
+
+.bottom-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 18px;
 }
