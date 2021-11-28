@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import WeatherCard from "../components/weatherCard";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
+import axios from "axios";
 
 const useStyles = makeStyles({
   center: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
     gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
     gap: " 0px",
     height: "80%",
-    color: "white"
+    color: "white",
   },
 
   item0: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
     margin: "10px",
   },
   item1: {
-    backgroundColor:"rgba(255, 248, 248,.3)",
+    backgroundColor: "rgba(255, 248, 248,.3)",
     gridRowStart: 1,
     gridColumnStart: 2,
     gridRowEnd: 2,
@@ -72,44 +73,50 @@ const useStyles = makeStyles({
     width: "400px",
     margin: "10px",
   },
-  nav:{
+  nav: {
     color: "white",
     display: "flex",
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "space-between",
-    margin: "20px"
+    margin: "20px",
   },
-  dorpMenu:{
+  dorpMenu: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 const Home = () => {
   const classes = useStyles();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = axios.get("/weather", {
+          headers: {
+            "x-auth-token": "",
+          },
+        });
+        console.log(res);
+      } catch (error) {}
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <Fragment>
       <header>
-        <div className={classes.nav}> 
-             <div>
-               {
-                 Date.now()
-               }
-             </div>
-             <div className={classes.dorpMenu}>
-               <div>
-                 peyong
-               </div>
-               <div className={classes.avatar}>
-               <Avatar name="Wim Mostmans" size="60" round={true} />
-               </div>
-               <div>
-                  drop
-               </div>
-             </div>
+        <div className={classes.nav}>
+          <div>{Date.now()}</div>
+          <div className={classes.dorpMenu}>
+            <div>peyong</div>
+            <div className={classes.avatar}>
+              <Avatar name="Wim Mostmans" size="60" round={true} />
+            </div>
+            <div>drop</div>
+          </div>
         </div>
       </header>
       <main className={classes.center}>

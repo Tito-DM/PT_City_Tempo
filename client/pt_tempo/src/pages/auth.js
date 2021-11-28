@@ -3,6 +3,7 @@ import React, { Fragment, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import { IoEyeSharp } from "react-icons/io5";
+
 import {
   BsFillSunFill,
   BsFillCloudLightningRainFill,
@@ -10,6 +11,7 @@ import {
   BsWind,
   BsFillCloudSunFill,
   BsCloudsFill,
+  BsFillEyeSlashFill,
 } from "react-icons/bs";
 
 //styles
@@ -91,7 +93,7 @@ const Auth = () => {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("signup", Auth, {
+      const res = await axios.post("/signup", Auth, {
         headers: {
           "content-type": "application/json",
         },
@@ -101,6 +103,12 @@ const Auth = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const [showPassord, setShowPassWord] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassWord(showPassord ? false : true);
   };
 
   const hanleInput = (e) => {
@@ -136,7 +144,7 @@ const Auth = () => {
             </div>
             <div>
               <input
-                type="password"
+                type={showPassord ? "text" : "password"}
                 minLength="8"
                 required
                 name="password"
@@ -146,7 +154,19 @@ const Auth = () => {
               />
             </div>
             {location.pathname !== "/login" ? (
-              <IoEyeSharp className={classes.passwordView} size={20} />
+              showPassord ? (
+                <BsFillEyeSlashFill
+                  className={classes.passwordView}
+                  size={20}
+                  onClick={handleShowPassword}
+                />
+              ) : (
+                <IoEyeSharp
+                  className={classes.passwordView}
+                  size={20}
+                  onClick={handleShowPassword}
+                />
+              )
             ) : null}
           </div>
           {location.pathname !== "/login" ? (
