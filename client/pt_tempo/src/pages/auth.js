@@ -93,7 +93,7 @@ const Auth = () => {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/signup", Auth, {
+      const res = await axios.post("http://localhost:5000/api/v1/", AuthState, {
         headers: {
           "content-type": "application/json",
         },
@@ -190,7 +190,7 @@ const Auth = () => {
               </div>
             </div>
           ) : null}
-          <input type="submit" className={classes.subButtom} />
+          <input type="submit" value="entrar" className={classes.subButtom} />
         </form>
       </div>
 

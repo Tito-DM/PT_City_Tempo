@@ -1,7 +1,7 @@
 {
   "name": "pt_tempo",
   "version": "0.1.0",
-  "proxy": "https://localhost:5000/api/v1",
+
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.0",

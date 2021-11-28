@@ -93,9 +93,9 @@ const Home = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = axios.get("/weather", {
+        const res = axios.get("http://localhost:5000/api/v1/weather", {
           headers: {
-            "x-auth-token": "",
+            "x-auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFhMmU2NzYyNTVmYzQzYzE2Njk1Yzc2In0sImlhdCI6MTYzODA2NTk0NSwiZXhwIjoxNjM4NDI1OTQ1fQ.S2L-aO_z5N-iS_yVsxGMMv3Kl249we3SSqumEYjOynI",
           },
         });
         console.log(res);
