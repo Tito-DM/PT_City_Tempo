@@ -17,33 +17,72 @@
   margin-bottom: 30px;
 }
 
-.weatherDescription{
-    font-size: large;
-    letter-spacing: 1.5px;
-    margin-top: 10px;
+.weatherDescription {
+  font-size: large;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
 }
 
-.cityName{
-    font-size: 30px;
-    letter-spacing: 2px;
-    margin: 15px 0px 40px 0px;
+.cityName {
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 15px 0px 40px 0px;
 }
 
-.cityTemp-section{
-    text-align: center;
+.cityTemp-section {
+  text-align: center;
 }
 
-.divider{
+.divider {
   width: 95%;
   margin: 4px;
   border: 1px solid white;
 }
 
-.bottom{
-    width: 100%; 
+.bottom {
+  width: 100%;
 }
 
-.bottom-content{
+.bottom-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 18px;
+}
+
+/* For large card*/
+
+.topLargeCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 8rem;
+}
+
+.weatherDescriptionLargeCard {
+  font-size: 40px;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
+}
+
+.cityNameLargeCard {
+  font-size: 50px;
+  letter-spacing: 2px;
+  margin: 15px 0px 40px 0px;
+}
+
+.dividerLargeCard {
+  width: 95%;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  border: 1px solid white;
+}
+
+.bottomLargeCard-content {
   display: flex;
   flex-direction: row;
   align-items: center;

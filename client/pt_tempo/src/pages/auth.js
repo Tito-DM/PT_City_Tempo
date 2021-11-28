@@ -84,7 +84,7 @@ const useStyles = makeStyles({
 const Auth = () => {
   const classes = useStyles();
   const location = useLocation();
-  const navegate = useNavigate()
+  let navegate = useNavigate()
 
   const context = useContext(MainContext);
   const { dispatch, user, messages } = context;
