@@ -3,7 +3,7 @@ const express = require("express");
 const NodeCaache = require("node-cache");
 const request = require("request");
 
-const myCache = new NodeCaache({ stdTTL: 1800 }); //store in cache for 30 miin
+const myCache = new NodeCaache({ stdTTL: 10 }); //store in cache for 30 miin
 
 const getWeatherData = async (req, res) => {
   if (myCache.has("weatherData")) {

@@ -7,7 +7,7 @@ const { check } = require("express-validator");
 
 //login
 router.post(
-  "/",
+  "/login",
   check("username", "nome do  usuário não pode estar vazio").isEmail(),
   check("password", "palavra -passe não pode estar vazia").exists(),
   auth.login

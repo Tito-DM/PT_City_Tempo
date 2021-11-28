@@ -10,6 +10,7 @@ import MainContext from "./context/context";
 import Auth from "./pages/auth";
 import Home from "./pages/home";
 import NotFound from "./pages/notfound";
+import PrivateRoute from "./protectedRoute";
 
 function App() {
   const context = useContext(MainContext);
@@ -19,16 +20,36 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        {user?.data?.id && user?.token ? (
-          <Route exact path="/" element={<Home />} />
-        ) : (
-          <Fragment>
-            <Route exact path="/login" element={<Auth />} />
-            <Route exact path="/signup" element={<Auth />} />
-          </Fragment>
-        )}
+        <Route
+          exact
+          path="/login"
+          element={
+            <PrivateRoute user={user?.data?.id}>
+              <Auth />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/signup"
+          element={
+            <PrivateRoute user={user?.data?.id}>
+              <Auth />
+            </PrivateRoute>
+          }
+        />
 
         <Route exact path="*" element={<NotFound />} />
+
+        <Route
+          exact
+          path="/"
+          element={
+            <PrivateRoute user={user?.data?.id} logged={true}>
+              <Home />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Fragment>
   );
