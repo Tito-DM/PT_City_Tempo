@@ -105,7 +105,30 @@ const Auth = () => {
   return (
     <div className="authMainContainer">
       <div className="titleContainer">
+        <div>
         <h1 className="title">O TEMPO AGORA </h1>
+        </div>
+      
+        <div className="weatheIcons">
+          <div>
+            <BsFillCloudSunFill size={20} color="#0288d1" />
+          </div>
+          <div>
+            <BsFillSunFill size={20} color="#f57f17" />
+          </div>
+          <div>
+            <BsFillCloudLightningRainFill size={20} color="#757575" />
+          </div>
+          <div>
+            <BsSnow size={20} color="#4fc3f7 " />
+          </div>
+          <div>
+            <BsWind size={20} color="#757575" />
+          </div>
+          <div>
+            <BsCloudsFill size={20} color="#757575" />
+          </div>
+        </div>
       </div>
       <div className="msgAlertContainer">
         <div>
@@ -118,7 +141,7 @@ const Auth = () => {
         </div>
       </div>
 
-      <div className="center">
+      <div className="centerAuthContainer">
         <form onSubmit={HandleSubmit}>
           <div>
             <div className="inputLabel">
@@ -187,26 +210,7 @@ const Auth = () => {
       </div>
 
       <div className="weather">
-        <div className="weatheIcons">
-          <div>
-            <BsFillCloudSunFill size={60} color="#0288d1" />
-          </div>
-          <div>
-            <BsFillSunFill size={60} color="#f57f17" />
-          </div>
-          <div>
-            <BsFillCloudLightningRainFill size={60} color="#757575" />
-          </div>
-          <div>
-            <BsSnow size={60} color="#4fc3f7 " />
-          </div>
-          <div>
-            <BsWind size={60} color="#757575" />
-          </div>
-          <div>
-            <BsCloudsFill size={60} color="#757575" />
-          </div>
-        </div>
+   
       </div>
     </div>
   );
