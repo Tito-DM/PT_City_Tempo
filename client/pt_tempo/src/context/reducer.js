@@ -4,7 +4,6 @@ const Reducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
-        isFetching: false,
       };
     case "message":
       return {
@@ -12,11 +11,18 @@ const Reducer = (state, action) => {
         messages: action.payload,
       };
 
-      case "updateWeatherData":
-        return {
-          ...state,
-          weatherData: action.payload,
-        };
+    case "updateWeatherData":
+      return {
+        ...state,
+        weatherData: action.payload,
+      };
+
+    case "logout":
+      localStorage.removeItem("user");
+      return {
+        ...state,
+        user: null,
+      };
 
     default:
       return state;

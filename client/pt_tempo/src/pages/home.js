@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import WeatherCard from "../components/weatherCard";
 import Avatar from "react-avatar";
@@ -40,7 +41,12 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log(weatherData, isfetching);
+  const hendleLogout = () => {
+    dispatch({ type: "logout" });
+
+    <Navigate to="/login" />;
+  };
+
   return (
     <Fragment>
       <header>
@@ -51,13 +57,14 @@ const Home = () => {
               <Avatar name={user.data.username} size="60" round={true} />
             </div>
             <div>
-              <FaPowerOff size={30} color="#ef5350 " />
+              <FaPowerOff size={30} color="#ef5350 " onClick={hendleLogout} />
             </div>
           </div>
         </div>
       </header>
       <main className="center">
         <div className="angryGrid">
+          
           {isfetching ? (
             <Fragment>
               <div id="item-0">
@@ -76,8 +83,8 @@ const Home = () => {
                 <CardSkeleton />
               </div>
             </Fragment>
-          ) : null}
-          {weatherData?.map((data, index) => (
+          ) : 
+          weatherData?.map((data, index) => (
             <div id={`item-${index}`} key={data.id}>
               <WeatherCard
                 name={data.name}
@@ -87,8 +94,10 @@ const Home = () => {
                 largeCard={index === 4 ? true : false} //true for large card and false for medium card
               />
             </div>
-          ))}
+          ))
+        }
         </div>
+      
       </main>
     </Fragment>
   );
