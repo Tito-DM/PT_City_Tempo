@@ -60,17 +60,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
 }
 
 .weatherDescriptionLargeCard {
-  font-size: 40px;
+  font-size: 28px;
   letter-spacing: 1.5px;
   margin-top: 10px;
 }
 
 .cityNameLargeCard {
-  font-size: 50px;
+  font-size: 28px;
   letter-spacing: 2px;
   margin: 15px 0px 40px 0px;
 }
@@ -89,4 +89,47 @@
   justify-content: space-between;
   margin-left: 8px;
   margin-right: 18px;
+}
+
+
+/* media query */
+
+@media only screen  and (max-width: 550px){
+
+.topLargeCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.weatherDescriptionLargeCard {
+  font-size: large;
+  letter-spacing: 1.5px;
+  margin-top: 10px;
+}
+
+.cityNameLargeCard {
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 15px 0px 40px 0px;
+}
+
+.dividerLargeCard {
+  width: 95%;
+  margin: 4px;
+  border: 1px solid white;
+}
+
+.bottomLargeCard-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 18px;
+}
+
 }

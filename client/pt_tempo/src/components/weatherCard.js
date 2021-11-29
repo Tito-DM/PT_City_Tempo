@@ -19,8 +19,7 @@ const WeatherCard = ({ name, main, tempo, wind,largeCard }) => {
             <img
               src={`https://openweathermap.org/img/wn/${tempo[0].icon}@2x.png`}
               alt="icon"
-              width={largeCard ? "200px" :"100px"}
-              height= {largeCard ? "200px" :"100px"}
+ 
             />
           </div>
           <div className={largeCard ? "weatherDescriptionLargeCard":"weatherDescription"}>{tempo[0].description}</div>
