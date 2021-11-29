@@ -9,6 +9,7 @@ const UserSchema = moongose.Schema({
     type: String,
     required: true,
   },
+
 });
 
 module.exports = moongose.model("user", UserSchema);

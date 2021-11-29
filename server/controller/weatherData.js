@@ -26,10 +26,6 @@ const getWeatherData = async (req, res) => {
     }
   );
 
-  //const resp = await axios.get("https://dog.ceo/api/breeds/list/all")
-  //return res.status(200).json( resp);
-  //cach the data
-  // myCache.set("weatherData", resp);
 };
 
 module.exports = getWeatherData;

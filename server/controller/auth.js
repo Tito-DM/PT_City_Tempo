@@ -45,7 +45,9 @@ const login = async (req, res) => {
     //get token
     const token = jwtGenerator(user);
 
-    res.status(200).json({ data,sucess: true, msg: "login efetuado com sucess ",token  });
+    res
+      .status(200)
+      .json({ data, sucess: true, msg: "login efetuado com sucess ", token });
   } catch (error) {
     res.status(500).send("server Error");
   }
@@ -58,14 +60,29 @@ const siginUp = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { username, password } = req.body;
+  const { username, password, password_confirmation } = req.body;
 
   try {
     //check if user exists
     let user = await User.findOne({ username });
 
     if (user) {
-      return res.status(400).json({ errors: [{ msg: "user already exists" }] });
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "Este usuário ja existe" }] });
+    }
+
+    //check if password and password_confirmation match
+    const passwordMatch = password !== password_confirmation;
+    console.log(passwordMatch)
+    if (passwordMatch) {
+      return res
+        .status(400)
+        .json({
+          errors: [
+            { msg: "A palavra-pass e sua confirmação não são as mesma " },
+          ],
+        });
     }
 
     user = new User({
@@ -84,7 +101,9 @@ const siginUp = async (req, res) => {
     //get token
     const token = jwtGenerator(user);
 
-    res.status(200).json({data,sucess: true, msg: "registo efetuado com sucess",token });
+    res
+      .status(200)
+      .json({ data, sucess: true, msg: "registo efetuado com sucess", token });
   } catch (error) {
     res.status(500).send(error);
   }
