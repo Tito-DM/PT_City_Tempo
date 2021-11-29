@@ -210,7 +210,7 @@ const Auth = () => {
         </form>
       </div>
 
-      <div className="weather">
+      <div className="bottomSketch">
    
       </div>
     </div>
