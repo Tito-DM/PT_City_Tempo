@@ -20,12 +20,13 @@ const Home = () => {
     async function fetchData() {
       setIsfetching(true);
       try {
-        const res = axios.get("http://localhost:5000/api/v1/weather", {
+        const res = axios.get(`${process.env.REACT_APP_API_URL}/weather`, {
           headers: {
             "x-auth-token": user.token,
           },
         });
         //return a promise
+
         res.then((data) => {
           dispatch({ type: "updateWeatherData", payload: data.data.list });
           setIsfetching(false);
@@ -46,6 +47,28 @@ const Home = () => {
 
     <Navigate to="/login" />;
   };
+  //handle skeleton display
+  const handleSkeletonDisplay = () => {
+    return (
+      <Fragment>
+        <div id="item-0">
+          <CardSkeleton />
+        </div>
+        <div id="item-1">
+          <CardSkeleton />
+        </div>
+        <div id="item-2">
+          <CardSkeleton />
+        </div>
+        <div id="item-3">
+          <CardSkeleton />
+        </div>
+        <div id="item-4">
+          <CardSkeleton />
+        </div>
+      </Fragment>
+    );
+  };
 
   return (
     <Fragment>
@@ -56,7 +79,7 @@ const Home = () => {
             <div className="avatar">
               <Avatar name={user.data.username} size="60" round={true} />
             </div>
-            <div>
+            <div className="logoutButton">
               <FaPowerOff size={30} color="#ef5350 " onClick={hendleLogout} />
             </div>
           </div>
@@ -64,40 +87,20 @@ const Home = () => {
       </header>
       <main className="center">
         <div className="angryGrid">
-          
-          {isfetching ? (
-            <Fragment>
-              <div id="item-0">
-                <CardSkeleton />
-              </div>
-              <div id="item-1">
-                <CardSkeleton />
-              </div>
-              <div id="item-2">
-                <CardSkeleton />
-              </div>
-              <div id="item-3">
-                <CardSkeleton />
-              </div>
-              <div id="item-4">
-                <CardSkeleton />
-              </div>
-            </Fragment>
-          ) : 
-          weatherData?.map((data, index) => (
-            <div id={`item-${index}`} key={data.id}>
-              <WeatherCard
-                name={data.name}
-                main={data.main}
-                tempo={data.weather}
-                wind={data.wind}
-                largeCard={index === 4 ? true : false} //true for large card and false for medium card
-              />
-            </div>
-          ))
-        }
+          {isfetching
+            ? handleSkeletonDisplay()
+            : weatherData?.map((data, index) => (
+                <div id={`item-${index}`} key={data.id}>
+                  <WeatherCard
+                    name={data.name}
+                    main={data.main}
+                    tempo={data.weather}
+                    wind={data.wind}
+                    largeCard={index === 4 ? true : false} //true for large card and false for medium card
+                  />
+                </div>
+              ))}
         </div>
-      
       </main>
     </Fragment>
   );

@@ -3,18 +3,18 @@ const express = require("express");
 const NodeCaache = require("node-cache");
 const request = require("request");
 
-const myCache = new NodeCaache({ stdTTL: 10 }); //store in cache for 30 miin
+const myCache = new NodeCaache({ stdTTL: 1800 }); //store in cache for 30 miin
 
 const getWeatherData = async (req, res) => {
+ 
   if (myCache.has("weatherData")) {
-    const cachedData = myCache.get("weatherData");
-    return res.status(200).json({
-      cachedData,
-    });
+    return res.status(200).json(
+      myCache.get("weatherData"),
+    );
   }
 
   request(
-    "https://api.openweathermap.org/data/2.5/group?id=2267056,2267094,2740636,2735941,2268337&appid=763dba8fd4147a5d98cd2eef4b89eb34",
+    process.env.OPENWEATHER_API_URL,
     { json: true },
     (err, ress, body) => {
       if (err) {

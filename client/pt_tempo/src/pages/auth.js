@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     color: "white",
     borderRadius: "5px",
     border: "none",
+    cursor: "pointer",
   },
   passwordContainer: {
     position: "relative",
@@ -120,7 +121,7 @@ const Auth = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/v1${location.pathname}`,
+        `${process.env.REACT_APP_API_URL}${location.pathname}`,
         AuthState,
         {
           headers: {
@@ -138,17 +139,14 @@ const Auth = () => {
     } catch (error) {
       if (error.response) {
         setLoading(false);
-       
+
         const { msg } = error?.response?.data?.errors[0];
         dispatch({ type: "message", payload: msg });
         setMsgActivator(true);
-        cancelMessage()
-
+        cancelMessage();
       }
       console.log(error);
     }
-
-  
   };
 
   const [showPassord, setShowPassWord] = useState(false);
