@@ -19,13 +19,13 @@ const Home = () => {
     async function fetchData() {
       setIsfetching(true);
       try {
+         //get the url of the server from .env file and path routes file routes-->WEATHERDATA
         const res = axios.get(`${process.env.REACT_APP_API_URL}${WEATHERDATA}`, {
           headers: {
             "x-auth-token": user.token,
           },
         });
         //return a promise
-
         res.then((data) => {
           dispatch({ type: UPDATEWEATHERDATA, payload: data.data.list });
           setIsfetching(false);
@@ -79,8 +79,8 @@ const Home = () => {
             <div className="avatar">
               <Avatar name={user.data.username} size="60" round={true} />
             </div>
-            <div className="logoutButton">
-              <FaPowerOff size={30} color="#ef5350 " onClick={hendleLogout} />
+            <div className="logoutButton" onClick={hendleLogout}>
+              <FaPowerOff size={30} color="#ef5350 "  />
               <span className="logutText">logout</span>
             </div>
           </div>
@@ -94,8 +94,8 @@ const Home = () => {
                 <div id={`item-${index}`} key={data.id}>
                   <WeatherCard
                     name={data.name}
-                    main={data.main}
-                    tempo={data.weather}
+                    weatherInfo={data.main}
+                    weatherCondition={data.weather}
                     wind={data.wind}
                     largeCard={index === 4 ? true : false} //true for large card and false for medium card
                   />

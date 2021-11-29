@@ -1,9 +1,9 @@
 import React from "react";
 import "./weatherCard.css";
 
-const WeatherCard = ({ name, main, tempo, wind,largeCard }) => {
+const WeatherCard = ({ name, weatherInfo, weatherCondition, wind,largeCard }) => {
   //destructure main object
-  const { temp, temp_min, temp_max, humidity, pressure } = main;
+  const { temp, temp_min, temp_max, humidity, pressure } = weatherInfo;
   const { speed } = wind;
 
   //convert kelvin to celcius
@@ -17,12 +17,12 @@ const WeatherCard = ({ name, main, tempo, wind,largeCard }) => {
         <div className="iconText-section">
           <div className="weatherCard-icon">
             <img
-              src={`https://openweathermap.org/img/wn/${tempo[0].icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${weatherCondition[0].icon}@2x.png`}
               alt="icon"
  
             />
           </div>
-          <div className={largeCard ? "weatherDescriptionLargeCard":"weatherDescription"}>{tempo[0].description}</div>
+          <div className={largeCard ? "weatherDescriptionLargeCard":"weatherDescription"}>{weatherCondition[0].description}</div>
         </div>
 
         <div className="cityTemp-section">

@@ -12,7 +12,7 @@ const jwtGenerator = (user) => {
   };
 
   return jwt.sign(payload, process.env.JWTSECRETKEY, {
-    expiresIn: 360000,
+    expiresIn: 3600, // token expires in an hour
   });
 };
 
@@ -74,7 +74,7 @@ const siginUp = async (req, res) => {
 
     //check if password and password_confirmation match
     const passwordMatch = password !== password_confirmation;
-    console.log(passwordMatch)
+   
     if (passwordMatch) {
       return res
         .status(400)

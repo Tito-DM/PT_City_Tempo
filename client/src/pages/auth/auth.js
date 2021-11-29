@@ -46,6 +46,7 @@ const Auth = () => {
     setLoading(true);
     try {
       const res = await axios.post(
+        //get the url of the server from .env file and pathname from current url path
         `${process.env.REACT_APP_API_URL}${location.pathname}`,
         AuthState,
         {
