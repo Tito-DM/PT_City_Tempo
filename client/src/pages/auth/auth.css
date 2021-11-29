@@ -40,7 +40,7 @@
 .weather {
   clip-path: polygon(0 41%, 69% 1%, 100% 50%, 100% 100%, 25% 100%, 0 100%);
   background-color: white;
-  height: 365px;
+  height: 180px;
   width: 100%;
   position: relative;
 }
