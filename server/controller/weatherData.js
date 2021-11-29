@@ -3,7 +3,9 @@ const express = require("express");
 const NodeCaache = require("node-cache");
 const request = require("request");
 
-const myCache = new NodeCaache({ stdTTL: 1800 }); //store in cache for 30 miin
+//30 min = 1800 sec
+//store in cache for 30 min
+const myCache = new NodeCaache({ stdTTL: 1800 }); 
 
 const getWeatherData = async (req, res) => {
  
