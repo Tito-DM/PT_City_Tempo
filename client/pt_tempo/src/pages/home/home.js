@@ -1,17 +1,16 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { makeStyles } from "@material-ui/styles";
-import WeatherCard from "../components/weatherCard";
+import WeatherCard from "../../components/weatherCard/weatherCard";
 import Avatar from "react-avatar";
 import axios from "axios";
-import MainContext from "../context/context";
+import MainContext from "../../context/context";
 import { FaPowerOff } from "react-icons/fa";
-import CardSkeleton from "../components/skeleton/CardSkeleton";
-
-const useStyles = makeStyles({});
+import CardSkeleton from "../../components/CardSkeleton";
+import { LOGOUT, UPDATEWEATHERDATA } from "../../context/types";
+import { LOGIN, WEATHERDATA } from "../../routes";
+import "./home.css"
 
 const Home = () => {
-  const classes = useStyles();
   const context = useContext(MainContext);
   const { dispatch, user, weatherData } = context;
   const [isfetching, setIsfetching] = useState(false);
@@ -20,7 +19,7 @@ const Home = () => {
     async function fetchData() {
       setIsfetching(true);
       try {
-        const res = axios.get(`${process.env.REACT_APP_API_URL}/weather`, {
+        const res = axios.get(`${process.env.REACT_APP_API_URL}${WEATHERDATA}`, {
           headers: {
             "x-auth-token": user.token,
           },
@@ -28,7 +27,7 @@ const Home = () => {
         //return a promise
 
         res.then((data) => {
-          dispatch({ type: "updateWeatherData", payload: data.data.list });
+          dispatch({ type: UPDATEWEATHERDATA, payload: data.data.list });
           setIsfetching(false);
         });
       } catch (error) {}
@@ -36,16 +35,17 @@ const Home = () => {
 
     fetchData();
     // make a request each 30 min
+    //1800000ms = 30min
     let interval = setInterval(fetchData, 1800000);
 
     //destroy interval on unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [dispatch,user.token]);
 
   const hendleLogout = () => {
-    dispatch({ type: "logout" });
+    dispatch({ type: LOGOUT });
 
-    <Navigate to="/login" />;
+    <Navigate to={LOGIN} />;
   };
   //handle skeleton display
   const handleSkeletonDisplay = () => {
@@ -74,13 +74,14 @@ const Home = () => {
     <Fragment>
       <header>
         <div className="nav">
-          <div className="dorpMenu">
+          <div className="logoutBtnContainer">
             <div>{user.data.username.toUpperCase()}</div>
             <div className="avatar">
               <Avatar name={user.data.username} size="60" round={true} />
             </div>
             <div className="logoutButton">
               <FaPowerOff size={30} color="#ef5350 " onClick={hendleLogout} />
+              <span className="logutText">logout</span>
             </div>
           </div>
         </div>

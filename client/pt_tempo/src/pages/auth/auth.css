@@ -1,0 +1,127 @@
+.center {
+  margin: 7% 30%;
+  width: 50%;
+  padding: 10px;
+}
+
+.inputStyele {
+  width: 80%;
+  margin: 10px 0px;
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+}
+
+.inputLabel {
+  color: white;
+}
+
+.subButtom {
+  width: 85px;
+  height: 40px;
+  background: #00897b;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.passwordView {
+  position: absolute;
+  top: 45%;
+  right: 22%;
+}
+
+.weather {
+  clip-path: polygon(0 41%, 69% 1%, 100% 50%, 100% 100%, 25% 100%, 0 100%);
+  background-color: white;
+  height: 365px;
+  width: 100%;
+  position: relative;
+}
+
+.titleContainer {
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.title {
+  letter-spacing: 1.5;
+  font-size: 50px;
+}
+
+.signLogLink {
+  text-decoration: none;
+  cursor: poiter;
+  color: white;
+}
+
+.weatheIcons {
+  color: black;
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.msgAlertContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.msgAlert {
+  width: 30%;
+}
+
+/*Media Query Mobile*/
+
+@media (max-width: 550px) {
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 15% 20px 0px;
+  }
+
+  .inputfield {
+    width: "350px";
+  }
+  .title {
+    font-size: x-large;
+    letter-spacing: 1.5px;
+  }
+  .weatheIcons {
+    top: 43%;
+  }
+
+  .weather {
+    width: 100%;
+    height: 58vh;
+    position: relative;
+  }
+  .inputfield {
+    width: 350px;
+  }
+}
+
+/* Media Query Medium size laptop*/
+
+@media screen and (max-width: 1024px) and (min-width: 750px) {
+  .weather {
+    height: 53vh;
+  }
+}

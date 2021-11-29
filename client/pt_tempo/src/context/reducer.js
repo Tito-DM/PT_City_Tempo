@@ -1,23 +1,25 @@
+import { AUTH, LOGOUT, MESSAGE, UPDATEWEATHERDATA } from "./types";
+
 const Reducer = (state, action) => {
   switch (action.type) {
-    case "auth":
+    case AUTH:
       return {
         ...state,
         user: action.payload,
       };
-    case "message":
+    case MESSAGE:
       return {
         ...state,
         messages: action.payload,
       };
 
-    case "updateWeatherData":
+    case UPDATEWEATHERDATA:
       return {
         ...state,
         weatherData: action.payload,
       };
 
-    case "logout":
+    case LOGOUT:
       localStorage.removeItem("user");
       return {
         ...state,

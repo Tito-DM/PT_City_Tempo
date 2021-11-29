@@ -1,0 +1,222 @@
+.authMainContainer{
+    overflow: hidden !important;
+  }
+  
+  .center {
+    margin: 0 auto;
+    width: 90%;
+    height: 90vh;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .avatar{
+    margin: 0px 10px;
+  }
+  
+  .angryGrid {
+    display: grid;
+    margin: 30px auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px;
+    height: 100%;
+    width: 74%;
+    color: white;
+    position: absolute;
+    top: 0%;
+    left: 12%;
+  }
+  
+  #item-0 {
+    background-color: rgba(255, 248, 248, 0.3);
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 2;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+  #item-1 {
+    background-color: rgba(255, 248, 248, 0.3);
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-column-end: 3;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+  
+  #item-2 {
+    background-color: rgba(255, 248, 248, 0.3);
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 3;
+    grid-column-end: 2;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+  
+  #item-3 {
+    background-color: rgba(255, 248, 248, 0.3);
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end: 3;
+    height: 370px;
+    width: 400px;
+    margin: 10px;
+  }
+  
+  #item-4 {
+    background-color: rgba(255, 248, 248, 0.3);
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-end: 3;
+    grid-column-end: 4;
+    height: 760px;
+    width: 400px;
+    margin: 10px;
+  }
+  .logoutButton{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logutText{
+    margin-top: 5px;
+  }
+  
+  .nav {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-end;
+    margin: 20px;
+  }
+  
+  .logoutBtnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  /* media query */
+  @media screen and (max-width: 1024px) and (min-width: 750px) {
+    .center {
+      margin: 150px 0px 0px 0px;
+      /* width: 90%; */
+      padding: 10px;
+      position: relative;
+      height: 90vh;
+    }
+  
+    .cityNameLargeCard {
+      font-size: x-large !important;
+    }
+  
+    .angryGrid {
+      display: grid;
+      margin: 0 auto;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-gap: 0px;
+      gap: 0px;
+      height: 100%;
+      max-width: 80%;
+      color: white;
+      position: absolute;
+      top: 0%;
+      left: 5%;
+    }
+  
+    .weatherDescriptionLargeCard {
+      font-size: x-large !important;
+    }
+  
+    #item-0 {
+      height: 370px;
+      width: 290px;
+      margin: 10px;
+    }
+  
+    #item-1 {
+      height: 370px;
+      width: 290px;
+      margin: 10px;
+    }
+  
+    #item-2 {
+      height: 370px;
+      width: 290px;
+      margin: 10px;
+    }
+  
+    #item-3 {
+      height: 370px;
+      width: 290px;
+      margin: 10px;
+    }
+  
+    #item-4 {
+      height: 760px;
+      width: 320px;
+      margin: 10px;
+    }
+  }
+  
+  /*mobile version*/
+  
+  @media only screen and (max-width: 550px) {
+    .center {
+      overflow: auto !important;
+  }
+  
+    .angryGrid {
+      display: flex;
+      flex-direction: column;
+  
+      width: 74%;
+  
+      position: absolute;
+      top: 0%;
+      left: 0%;
+    }
+  
+    #item-0 {
+      height: 370px;
+      width: 320px;
+      margin: 10px;
+    }
+    #item-1 {
+      height: 370px;
+      width: 320px;
+      margin: 10px;
+    }
+  
+    #item-2 {
+      height: 370px;
+      width: 320px;
+      margin: 10px;
+    }
+  
+    #item-3 {
+      height: 370px;
+      width: 320px;
+      margin: 10px;
+    }
+  
+    #item-4 {
+      height: 370px;
+      width: 320px;
+      margin: 10px;
+    }
+  }
+  

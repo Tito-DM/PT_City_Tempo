@@ -1,28 +1,26 @@
 import React, { Fragment, useContext } from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
 } from "react-router-dom";
-import "./App.css";
 import MainContext from "./context/context";
-import Auth from "./pages/auth";
-import Home from "./pages/home";
-import NotFound from "./pages/notfound";
+import Auth from "./pages/auth/auth";
+import Home from "./pages/home/home";
+import NotFound from "./pages/notfound/notfound";
 import PrivateRoute from "./protectedRoute";
+import { HOME, LOGIN, SIGNUP } from "./routes";
 
 function App() {
   const context = useContext(MainContext);
   const { user } = context;
-  const navegate = useNavigate();
+
 
   return (
     <Fragment>
       <Routes>
         <Route
           exact
-          path="/login"
+          path= {LOGIN}
           element={
             <PrivateRoute user={user?.data?.id}>
               <Auth />
@@ -31,7 +29,7 @@ function App() {
         />
         <Route
           exact
-          path="/signup"
+          path={SIGNUP}
           element={
             <PrivateRoute user={user?.data?.id}>
               <Auth />
@@ -43,7 +41,7 @@ function App() {
 
         <Route
           exact
-          path="/"
+          path={HOME}
           element={
             <PrivateRoute user={user?.data?.id} logged={true}>
               <Home />
